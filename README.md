@@ -1,6 +1,6 @@
 # C - Sorting algorithms & Big O
 
-This is an algorithm-based project in C Programming Language, by **David Atat** and **LovethO kebe** during the Full Stack Software Engineering studies at **ALX**. Several sorting algorithms are implemented, as well as their corresponding Big O notations.
+This is an algorithm-based project in C Programming Language, by **Faithful Ikechukwu** during the Full Stack Software Engineering studies at **ALX**. Several sorting algorithms are implemented, as well as their corresponding Big O notations.
 
 ## Header Files:
 

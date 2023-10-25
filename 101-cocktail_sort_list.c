@@ -1,48 +1,37 @@
 #include <stdio.h>
 #include "sort.h"
 
-/**
- * cocktail_sort_list - Sort a doubly linked list using cocktail sort
- * @list: Pointer to head of doubly linked list
- */
-listint_t *start;
-listint_t *i; 
+int swapped = 1;  
+listint_t *i;
 listint_t *j;
+listint_t *start;
 listint_t *end;
-int swapped;
 
 void cocktail_sort_list(listint_t **list) {
-  
-  if (!list || !*list) return;
+  if (list == NULL || *list == NULL || (*list)->next == NULL)
+    return;
 
   start = *list;
+  end = NULL;
 
   while (swapped) {
-    swapped = 0;
-
-    /*Forward pass*/
+    
     for (i = start; i->next != end; i = i->next) {
       if (i->n > i->next->n) {
-        swap_nodes(list, i, i->next);
+        listint_swap_nodes(i, i->next);
         print_list(*list);
         swapped = 1;
       }
     }
-    
-    /*Update end*/
     end = start;
 
-    /*Backward pass*/
     for (j = end->prev; j != start->prev; j = j->prev) {
-      if (j->n > j->prev->n) {
-        swap_nodes(list, j, j->prev);
+      if (i->n > i->prev->n) {
+        listint_swap_nodes(i, i->prev);
         print_list(*list);
-        swapped = 1;  
+        swapped = 1;
       }
     }
-
-    /*Update start*/
     start = end;
   }
-
 }

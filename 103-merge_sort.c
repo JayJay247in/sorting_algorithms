@@ -3,6 +3,7 @@
 #include "sort.h"
 
 void merge(int *array, int *tmp, size_t left, size_t mid, size_t right) {
+
   size_t i = left, j = mid, k = left;
 
   while (i < mid && j <= right) {
@@ -21,10 +22,13 @@ void merge(int *array, int *tmp, size_t left, size_t mid, size_t right) {
     array[i] = tmp[i];
 }
 
-void top_down_split_merge(int *array, int *tmp, size_t left, size_t right) {
-  if (right <= left) return;
 
-  size_t mid = (left + right) / 2;
+void top_down_split_merge(int *array, int *tmp, size_t left, size_t right) {
+
+size_t mid;
+mid = (left + right) / 2;
+if (right <= left) return;
+
   top_down_split_merge(array, tmp, left, mid);
   top_down_split_merge(array, tmp, mid + 1, right);
   merge(array, tmp, left, mid + 1, right);

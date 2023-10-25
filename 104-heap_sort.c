@@ -4,6 +4,7 @@
 void siftDown(int *array, int root, int bottom, size_t size) {
   int maxChild;
   int done = 0;
+  size_t i;
 
   while ((root * 2 <= bottom) && (!done)) {
     if (root * 2 == bottom)
@@ -18,8 +19,8 @@ void siftDown(int *array, int root, int bottom, size_t size) {
       array[root] = array[maxChild];
       array[maxChild] = tmp;
       
-      // Print array
-      for (int i = 0; i < size; i++) {
+      /*Print array*/
+      for (i = 0; i < size; i++) {
         printf("%d ", array[i]);
       }
       printf("\n");
@@ -27,21 +28,24 @@ void siftDown(int *array, int root, int bottom, size_t size) {
       root = maxChild;
     }
     else
-      done = 1; 
+      done = 1;
   }
 }
 
 void heap_sort(int *array, size_t size) {
-  for (int i = (size / 2); i >= 0; i--)
+  size_t i;
+  size_t j;
+
+  for (i = (size / 2); i > 0; i--)
     siftDown(array, i, size - 1, size);
 
-  for (int i = size - 1; i >= 0; i--) {
+  for (i = size - 1; i > 0; i--) {
     int tmp = array[0];
     array[0] = array[i];
     array[i] = tmp;
     
-    // Print array 
-    for (int j = 0; j < size; j++) {
+    /*Print array*/ 
+    for (j = 0; j < size; j++) {
       printf("%d ", array[j]);
     }
     printf("\n");

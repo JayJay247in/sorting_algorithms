@@ -3,31 +3,48 @@
 #include "sort.h"
 
 void counting_sort(int *array, size_t size) {
-  int max = array[0];
-  for (size_t i = 1; i < size; i++) {
-    if (array[i] > max)
-      max = array[i]; 
+
+  size_t i;
+  size_t j;
+  int max;
+  int *count;
+  int idx;
+
+  max = array[0];
+
+  for (i = 1; i < size; i++) {
+    if (array[i] > max) {
+      max = array[i];
+    }
   }
 
-  int *count = malloc(sizeof(int) * (max + 1));
-  for (int i = 0; i <= max; i++)
-    count[i] = 0;
+  count = malloc(sizeof(int) * (max + 1));
+  
+  for (idx = 0; idx <= max; idx++) {
+    count[idx] = 0;
+  }
 
-  for (size_t i = 0; i < size; i++)
+  for (i = 0; i < size; i++) {
     count[array[i]]++;
+  }
 
   printf("Counting array: ");
-  for (int i = 0; i <= max; i++)
-    printf("%d ", count[i]);
+  
+  for (idx = 0; idx <= max; idx++) {  
+    printf("%d ", count[idx]);
+  }
+
   printf("\n");
 
-  int j = 0;
-  for (int i = 0; i <= max; i++) {
-    while (count[i] > 0) {
-      array[j++] = i;
-      count[i]--;
+  j = 0;
+
+  for (idx = 0; idx <= max; idx++) {
+    while (count[idx] > 0) {
+      array[j++] = idx;
+      count[idx]--;
     }
   }
 
   free(count);
+
 }
